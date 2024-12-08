@@ -5,7 +5,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        {/* Sticky Top Bar */}
+
         <div className="sticky-bar">
           <Link className = "stickyLink" href="/action_menu">Action Menu</Link>
           <Link className = "stickyLink" href="/employee">Employee</Link>
@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
           <Link className = "stickyLink" href="/owner">Owner</Link>
         </div>
 
-        {/* Main Content */}
+
         <main>{children}</main>
       </body>
     </html>

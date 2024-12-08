@@ -4,20 +4,20 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(20, 20, 20, 0.5); /* Dark gray with 50% transparency */
+  background: rgba(20, 20, 20, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999; /* Ensures the modal is on top of other content */
+  z-index: 9999; 
 }
 
 .modal {
-  background: #333; /* Dark gray background for the modal */
-  color: white; /* Make the text white for better contrast */
+  background: #333; 
+  color: white; 
   border-radius: 8px;
   padding: 20px;
-  max-height: 80%; /* Set the max height to 80% of the page */
-  overflow: hidden; /* Ensure no overflow outside the modal */
+  max-height: 80%; 
+  overflow: hidden; 
   display: flex;
   flex-direction: column;
 }
@@ -30,32 +30,32 @@
 
 .modal-body {
   flex-grow: 1;
-  overflow-y: auto; /* Allow scrolling when content overflows */
-  max-height: 70%; /* Use max-height of 70% to leave space for footer */
+  overflow-y: auto; 
+  max-height: 70%; 
 }
 
 .modal-field {
   display: flex;
-  align-items: center; /* Aligns label and input vertically */
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 10px;
-  max-width: 90%; /* Limits the width of the pair */
-  width: 100%; /* Ensures the pair uses the available space */
+  max-width: 90%; 
+  width: 100%; 
 }
 
 .modal-field label {
-  flex: 1; /* Label takes up 1 part of the available space */
-  margin-right: 10px; /* Adds space between label and input */
-  font-weight: bold; /* Makes the label stand out */
+  flex: 1; 
+  margin-right: 10px;
+  font-weight: bold; 
 }
 
 .modal-field input {
-  flex: 3; /* Input takes up 3 parts of the available space */
+  flex: 3; 
   padding: 8px;
-  border: 1px solid #555; /* Adds a border around the input */
+  border: 1px solid #555;
   border-radius: 4px;
-  background-color: #222; /* Matches modal's dark theme */
-  color: white; /* Ensures text is readable */
+  background-color: #222;
+  color: white;
 }
 
 .modal-footer {
@@ -73,12 +73,12 @@
 }
 
 .create-btn {
-  background-color: #125514; /* Green for create */
+  background-color: #058b09;
   color: white;
 }
 
 .exit-btn {
-  background-color: #7d2019; /* Red for exit */
+  background-color: #7d2019; 
   color: white;
 }
 

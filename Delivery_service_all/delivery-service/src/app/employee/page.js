@@ -68,13 +68,13 @@ function EmployeePage() {
     try {
       const response = await axios.post('http://localhost:4321/add_employee', payload);
       console.log('Driver added successfully:', response.data);
-      setModalOpen(false); // Close modal
-      alert('Employee added successfully!'); // Display success alert
-      // After adding the driver, fetch the latest data
+      setModalOpen(false); 
+      alert('Employee added successfully!');
+
       fetchEmployeeData();
     } catch (error) {
       console.error('Error adding employee:', error.response ? error.response.data : error.message);
-      alert('Error adding employee. Please try again.'); // Display error alert
+      alert('Error adding employee. Please try again.'); 
     }
 
   };

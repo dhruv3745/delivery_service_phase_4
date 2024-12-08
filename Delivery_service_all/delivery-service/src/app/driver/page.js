@@ -34,12 +34,11 @@ function DriverPage() {
       const response = await axios.post('http://localhost:4321/add_driver', payload);
       console.log('Driver added successfully:', response.data);
       setModalOpen(false); // Close modal
-      alert('Driver added successfully!'); // Display success alert
-      // After adding the driver, fetch the latest data
+      alert('Driver added successfully!'); 
       fetchDriverData();
     } catch (error) {
       console.error('Error adding driver:', error.response ? error.response.data : error.message);
-      alert('Error adding driver. Please try again.'); // Display error alert
+      alert('Error adding driver. Please try again.'); 
     }
   };
 

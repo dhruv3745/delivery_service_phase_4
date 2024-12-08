@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './Table.module.css';
 
 export default function Table({ data, columns , keys}) {
-  const totalRows = 10; // Set the total number of rows you want to show (can be adjusted)
-  const emptyRows = totalRows - data.length; // Calculate how many empty rows to add
+  const totalRows = 10; 
+  const emptyRows = totalRows - data.length;
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
@@ -22,7 +22,6 @@ export default function Table({ data, columns , keys}) {
               ))}
             </tr>
           ))}
-          {/* Adding empty rows if needed */}
           {Array.from({ length: emptyRows }).map((_, index) => (
             <tr key={index} className={styles.emptyRow}>
               {columns.map((col, i) => (

@@ -36,13 +36,13 @@ function OwnerPage() {
     try {
       const response = await axios.post('http://localhost:4321/add_owner', payload);
       console.log('Driver added successfully:', response.data);
-      setModalOpen(false); // Close modal
-      alert('Owner added successfully!'); // Display success alert
-      // After adding the driver, fetch the latest data
+      setModalOpen(false); 
+      alert('Owner added successfully!'); 
+
       fetchOwnerData();
     } catch (error) {
       console.error('Error adding owner:', error.response ? error.response.data : error.message);
-      alert('Error adding owner. Please try again.'); // Display error alert
+      alert('Error adding owner. Please try again.'); 
     }
   };
 

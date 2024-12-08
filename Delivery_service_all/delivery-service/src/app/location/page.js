@@ -33,13 +33,13 @@ function LocationPage() {
     try {
       const response = await axios.post('http://localhost:4321/add_location', payload);
       console.log('Driver added successfully:', response.data);
-      setModalOpen(false); // Close modal
-      alert('Location added successfully!'); // Display success alert
-      // After adding the driver, fetch the latest data
+      setModalOpen(false); 
+      alert('Location added successfully!'); 
+
       fetchLocationData();
     } catch (error) {
       console.error('Error adding location:', error.response ? error.response.data : error.message);
-      alert('Error adding location. Please try again.'); // Display error alert
+      alert('Error adding location. Please try again.'); 
     }
   };
 

@@ -1,5 +1,5 @@
 export function getInfo(entity) {
-    // Dummy data generator based on entity
+
     switch (entity) {
       case 'employee':
         return [
