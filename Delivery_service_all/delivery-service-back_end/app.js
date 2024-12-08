@@ -8,7 +8,6 @@ app.use(cors('http://localhost:3000'));
 
 const mysql = require('mysql2');
 
-// Create a connection to the MySQL database
 const db = mysql.createConnection({
   host: 'Dhruvs-MacBook-Pro-3.local',  // Replace with your MySQL server host
   socketPath: '/tmp/mysql.sock',       // Replace with the path to your MySQL socket
@@ -125,7 +124,7 @@ app.post('/add_business', (req, res) => {
         return res.status(400).json({ error: 'All fields are required' });
     }
 
-    const query = 'CALL add_driver_role(?, ?, ?, ?)';
+    const query = 'CALL add_business(?, ?, ?, ?)';
     const params = [ip_long_name, ip_rating, ip_spent, ip_location];
 
     db.query(query, params, (err, results) => {
@@ -232,7 +231,6 @@ app.post('/add_location', (req, res) => {
 app.post('/add_owner', (req, res) => {
     const { ip_username, ip_first_name, ip_last_name, ip_address, ip_birthdate } = req.body;
 
-    // Validate input fields
     if (!ip_username || !ip_first_name || !ip_last_name || !ip_address || !ip_birthdate) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -255,7 +253,6 @@ app.post('/add_owner', (req, res) => {
 app.post('/add_product', (req, res) => {
     const { ip_barcode, ip_name, ip_weight } = req.body;
 
-    // Validate input fields
     if (!ip_barcode || !ip_name || !ip_weight) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -276,7 +273,6 @@ app.post('/add_product', (req, res) => {
 app.post('/add_service', (req, res) => {
     const { ip_id, ip_long_name, ip_home_base, ip_manager } = req.body;
 
-    // Validate input fields
     if (!ip_id || !ip_long_name || !ip_home_base || !ip_manager) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -317,7 +313,6 @@ app.post('/add_van', (req, res) => {
 app.post('/add_worker_role', (req, res) => {
     const { ip_username } = req.body;
 
-    // Validate input fields
     if (!ip_username) {
         return res.status(400).json({ error: 'ip_username is required' });
     }
@@ -337,7 +332,6 @@ app.post('/add_worker_role', (req, res) => {
 app.post('/drive_van', (req, res) => {
     const { ip_id, ip_tag, ip_destination } = req.body;
 
-    // Validate input fields
     if (!ip_id || !ip_tag || !ip_destination) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -358,7 +352,6 @@ app.post('/drive_van', (req, res) => {
 app.post('/fire_employee', (req, res) => {
     const { ip_username, ip_id } = req.body;
 
-    // Validate input fields
     if (!ip_username || !ip_id) {
         return res.status(400).json({ error: 'Both ip_username and ip_id are required' });
     }
@@ -379,7 +372,6 @@ app.post('/fire_employee', (req, res) => {
 app.post('/hire_employee', (req, res) => {
     const { ip_username, ip_id } = req.body;
 
-    // Validate input fields
     if (!ip_username || !ip_id) {
         return res.status(400).json({ error: 'Both ip_username and ip_id are required' });
     }
@@ -400,7 +392,6 @@ app.post('/hire_employee', (req, res) => {
 app.post('/load_van', (req, res) => {
     const { ip_id, ip_tag, ip_barcode, ip_more_packages, ip_price } = req.body;
 
-    // Validate input fields
     if (!ip_id || !ip_tag || !ip_barcode || !ip_more_packages || !ip_price) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -421,7 +412,6 @@ app.post('/load_van', (req, res) => {
 app.post('/manage_service', (req, res) => {
     const { ip_username, ip_id } = req.body;
 
-    // Validate input fields
     if (!ip_username || !ip_id) {
         return res.status(400).json({ error: 'Both ip_username and ip_id are required' });
     }
@@ -442,7 +432,6 @@ app.post('/manage_service', (req, res) => {
 app.post('/purchase_product', (req, res) => {
     const { ip_long_name, ip_id, ip_tag, ip_barcode, ip_quantity } = req.body;
 
-    // Validate input fields
     if (!ip_long_name || !ip_id || !ip_tag || !ip_barcode || !ip_quantity) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -462,7 +451,6 @@ app.post('/purchase_product', (req, res) => {
 app.post('/refuel_van', (req, res) => {
     const { ip_id, ip_tag, ip_more_fuel } = req.body;
 
-    // Validate input fields
     if (!ip_id || !ip_tag || !ip_more_fuel) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -482,7 +470,6 @@ app.post('/refuel_van', (req, res) => {
 app.post('/remove_driver_role', (req, res) => {
     const { ip_username } = req.body;
 
-    // Validate input fields
     if (!ip_username) {
         return res.status(400).json({ error: 'ip_username is required' });
     }
@@ -502,7 +489,6 @@ app.post('/remove_driver_role', (req, res) => {
 app.post('/remove_product', (req, res) => {
     const { ip_barcode } = req.body;
 
-    // Validate input fields
     if (!ip_barcode) {
         return res.status(400).json({ error: 'ip_barcode is required' });
     }
@@ -522,7 +508,6 @@ app.post('/remove_product', (req, res) => {
 app.post('/remove_van', (req, res) => {
     const { ip_id, ip_tag } = req.body;
 
-    // Validate input fields
     if (!ip_id || !ip_tag) {
         return res.status(400).json({ error: 'Both ip_id and ip_tag are required' });
     }
@@ -542,7 +527,6 @@ app.post('/remove_van', (req, res) => {
 app.post('/start_funding', (req, res) => {
     const { ip_owner, ip_amount, ip_long_name, ip_fund_date } = req.body;
 
-    // Validate input fields
     if (!ip_owner || !ip_amount || !ip_long_name || !ip_fund_date) {
         return res.status(400).json({ error: 'All fields are required' });
     }
@@ -562,7 +546,6 @@ app.post('/start_funding', (req, res) => {
 app.post('/takeover_van', (req, res) => {
     const { ip_username, ip_id, ip_tag } = req.body;
 
-    // Validate input fields
     if (!ip_username || !ip_id || !ip_tag) {
         return res.status(400).json({ error: 'All fields (ip_username, ip_id, ip_tag) are required' });
     }

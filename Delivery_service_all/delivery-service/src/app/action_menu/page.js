@@ -21,27 +21,9 @@ const actions = [
 ];
 
 function ActionMenu() {
-  // Define the functions for each action
-  // const addBusiness = () => console.log('Adding business...');
-  // const addVan = () => console.log('Adding van...');
-  // const addWorkerRole = () => console.log('Adding worker role...');
-  // const driveVan = () => console.log('Driving van...');
-  // const fireEmployee = () => console.log('Firing employee...');
-  // const hireEmployee = () => console.log('Hiring employee...');
-  // const loadVan = () => console.log('Loading van...');
-  // const manageService = () => console.log('Managing service...');
-  // const purchaseProduct = () => console.log('Purchasing product...');
-  // const refuelVan = () => console.log('Refueling van...');
-  // const removeDriverRole = () => console.log('Removing driver role...');
-  // const removeProduct = () => console.log('Removing product...');
-  // const removeVan = () => console.log('Removing van...');
-  // const startFunding = () => console.log('Starting funding...');
-  // const takeoverVan = () => console.log('Taking over van...');
 
-  // Function to handle button click based on action
   const handleClick = (action) => {
 
-    // You can also call the respective action here if needed
     switch (action) {
       case 'addBusiness':
         addBusiness();
@@ -92,7 +74,6 @@ function ActionMenu() {
         console.log('Unknown action');
     }
 
-    // Open the modal when any button is clicked
     setModalOpen(true);
   };
 
@@ -102,13 +83,10 @@ function ActionMenu() {
   const [columns, setColumns] = useState([]);
   const [title, setTitle] = useState("");
 
-  // Example function to create service (for the Modal)
   const createService = () => {
     console.log('Creating service...');
   };
 
-  // Example fields for the modal
-  // const [createFields,setCreateFields] = useState([]);
 
   const fieldMappings = {
     add_business: ['Name', 'Rating', 'Spent', 'Location'],
@@ -142,7 +120,6 @@ function ActionMenu() {
     }
   };
   const handleSubmit = (buttonName, formData) => {
-    // Call the respective submit function based on the button clicked
     switch (buttonName) {
       case 'Add Business':
         submitAddBusiness(formData);
@@ -193,7 +170,6 @@ function ActionMenu() {
         console.log('Unknown action');
     }
   
-    // Open the modal when any button is clicked
     setModalOpen(false);
   };
 
@@ -308,7 +284,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/add_van', payload);
       console.log('Van added successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Van added successfully!');
     } catch (error) {
       console.error('Error adding van:', error.response ? error.response.data : error.message);
@@ -325,7 +301,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/add_worker_role', payload);
       console.log('Worker role added successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Worker role added successfully!');
     } catch (error) {
       console.error('Error adding worker role:', error.response ? error.response.data : error.message);
@@ -342,7 +318,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/drive_van', payload);
       console.log('Van driven successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Van driven successfully!');
     } catch (error) {
       console.error('Error driving van:', error.response ? error.response.data : error.message);
@@ -358,7 +334,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/fire_employee', payload);
       console.log('Employee fired successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Employee fired successfully!');
     } catch (error) {
       console.error('Error firing employee:', error.response ? error.response.data : error.message);
@@ -374,7 +350,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/hire_employee', payload);
       console.log('Employee hired successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Employee hired successfully!');
     } catch (error) {
       console.error('Error hiring employee:', error.response ? error.response.data : error.message);
@@ -393,7 +369,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/load_van', payload);
       console.log('Van loaded successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Van loaded successfully!');
     } catch (error) {
       console.error('Error loading van:', error.response ? error.response.data : error.message);
@@ -409,7 +385,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/manage_service', payload);
       console.log('Service managed successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Service managed successfully!');
     } catch (error) {
       console.error('Error managing service:', error.response ? error.response.data : error.message);
@@ -428,7 +404,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/purchase_product', payload);
       console.log('Product purchased successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Product purchased successfully!');
     } catch (error) {
       console.error('Error purchasing product:', error.response ? error.response.data : error.message);
@@ -445,7 +421,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/refuel_van', payload);
       console.log('Van refueled successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Van refueled successfully!');
     } catch (error) {
       console.error('Error refueling van:', error.response ? error.response.data : error.message);
@@ -460,7 +436,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/remove_driver_role', payload);
       console.log('Driver role removed successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Driver role removed successfully!');
     } catch (error) {
       console.error('Error removing driver role:', error.response ? error.response.data : error.message);
@@ -475,7 +451,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/remove_product', payload);
       console.log('Product removed successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Product removed successfully!');
     } catch (error) {
       console.error('Error removing product:', error.response ? error.response.data : error.message);
@@ -491,7 +467,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/remove_van', payload);
       console.log('Van removed successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Van removed successfully!');
     } catch (error) {
       console.error('Error removing van:', error.response ? error.response.data : error.message);
@@ -509,7 +485,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/start_funding', payload);
       console.log('Funding started successfully:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Funding started successfully!');
     } catch (error) {
       console.error('Error starting funding:', error.response ? error.response.data : error.message);
@@ -526,7 +502,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/takeover_van', payload);
       console.log('Van takeover successful:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Van takeover successful!');
     } catch (error) {
       console.error('Error taking over van:', error.response ? error.response.data : error.message);
@@ -546,7 +522,7 @@ function ActionMenu() {
     try {
       const response = await axios.post('http://localhost:4321/add_business', payload);
       console.log('business add successful:', response.data);
-      setModalOpen(false); // Close modal
+      setModalOpen(false); 
       alert('Business added!');
     } catch (error) {
       console.error('Error adding business:', error.response ? error.response.data : error.message);
@@ -565,7 +541,7 @@ function ActionMenu() {
       {actions.map((action) => {
         return (
           <button
-            key={action.name}  // Ensure action.name is a string and unique
+            key={action.name}  
             className="action-btn"
             onClick={() => handleClick(action.action)}
           >
