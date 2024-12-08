@@ -310,7 +310,6 @@ function ActionMenu() {
       console.log('Van added successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Van added successfully!');
-      fetchVanData();
     } catch (error) {
       console.error('Error adding van:', error.response ? error.response.data : error.message);
       alert('Error adding van. Please try again.');
@@ -328,7 +327,6 @@ function ActionMenu() {
       console.log('Worker role added successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Worker role added successfully!');
-      fetchWorkerRoleData();
     } catch (error) {
       console.error('Error adding worker role:', error.response ? error.response.data : error.message);
       alert('Error adding worker role. Please try again.');
@@ -346,7 +344,6 @@ function ActionMenu() {
       console.log('Van driven successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Van driven successfully!');
-      fetchVanData();
     } catch (error) {
       console.error('Error driving van:', error.response ? error.response.data : error.message);
       alert('Error driving van. Please try again.');
@@ -363,7 +360,6 @@ function ActionMenu() {
       console.log('Employee fired successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Employee fired successfully!');
-      fetchEmployeeData();
     } catch (error) {
       console.error('Error firing employee:', error.response ? error.response.data : error.message);
       alert('Error firing employee. Please try again.');
@@ -380,7 +376,6 @@ function ActionMenu() {
       console.log('Employee hired successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Employee hired successfully!');
-      fetchEmployeeData();
     } catch (error) {
       console.error('Error hiring employee:', error.response ? error.response.data : error.message);
       alert('Error hiring employee. Please try again.');
@@ -400,7 +395,6 @@ function ActionMenu() {
       console.log('Van loaded successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Van loaded successfully!');
-      fetchVanData();
     } catch (error) {
       console.error('Error loading van:', error.response ? error.response.data : error.message);
       alert('Error loading van. Please try again.');
@@ -417,7 +411,6 @@ function ActionMenu() {
       console.log('Service managed successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Service managed successfully!');
-      fetchServiceData();
     } catch (error) {
       console.error('Error managing service:', error.response ? error.response.data : error.message);
       alert('Error managing service. Please try again.');
@@ -437,7 +430,6 @@ function ActionMenu() {
       console.log('Product purchased successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Product purchased successfully!');
-      fetchProductData();
     } catch (error) {
       console.error('Error purchasing product:', error.response ? error.response.data : error.message);
       alert('Error purchasing product. Please try again.');
@@ -455,7 +447,6 @@ function ActionMenu() {
       console.log('Van refueled successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Van refueled successfully!');
-      fetchVanData();
     } catch (error) {
       console.error('Error refueling van:', error.response ? error.response.data : error.message);
       alert('Error refueling van. Please try again.');
@@ -471,7 +462,6 @@ function ActionMenu() {
       console.log('Driver role removed successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Driver role removed successfully!');
-      fetchDriverData();
     } catch (error) {
       console.error('Error removing driver role:', error.response ? error.response.data : error.message);
       alert('Error removing driver role. Please try again.');
@@ -487,7 +477,6 @@ function ActionMenu() {
       console.log('Product removed successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Product removed successfully!');
-      fetchProductData();
     } catch (error) {
       console.error('Error removing product:', error.response ? error.response.data : error.message);
       alert('Error removing product. Please try again.');
@@ -504,7 +493,6 @@ function ActionMenu() {
       console.log('Van removed successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Van removed successfully!');
-      fetchVanData();
     } catch (error) {
       console.error('Error removing van:', error.response ? error.response.data : error.message);
       alert('Error removing van. Please try again.');
@@ -523,13 +511,12 @@ function ActionMenu() {
       console.log('Funding started successfully:', response.data);
       setModalOpen(false); // Close modal
       alert('Funding started successfully!');
-      fetchFundingData();
     } catch (error) {
       console.error('Error starting funding:', error.response ? error.response.data : error.message);
       alert('Error starting funding. Please try again.');
     }
   };
-  const submitTakeoverVan = async (input_fields) => {
+  const submitTakeoverVan = async (vanTakeover) => {
     const payload = {
       ip_username: vanTakeover["Username"],
       ip_id: vanTakeover["ID"],
@@ -541,30 +528,29 @@ function ActionMenu() {
       console.log('Van takeover successful:', response.data);
       setModalOpen(false); // Close modal
       alert('Van takeover successful!');
-      fetchVanData();
     } catch (error) {
       console.error('Error taking over van:', error.response ? error.response.data : error.message);
       alert('Error taking over van. Please try again.');
     }
   };
 
-  const submitAddBusiness = async (input_fields) => {
+  const submitAddBusiness = async (businessAdd) => {
+    console.log("called")
     const payload = {
-      ip_long_name: vanTakeover["Name"],
-      ip_rating: vanTakeover["Rating"],
-      ip_spent: vanTakeover["Spent"],
-      ip_location: vanTakeover["Location"]
+      ip_long_name: businessAdd["Name"],
+      ip_rating: businessAdd["Rating"],
+      ip_spent: businessAdd["Spent"],
+      ip_location: businessAdd["Location"]
     };
   
     try {
       const response = await axios.post('http://localhost:4321/add_business', payload);
-      console.log('Van takeover successful:', response.data);
+      console.log('business add successful:', response.data);
       setModalOpen(false); // Close modal
-      alert('Van takeover successful!');
-      fetchVanData();
+      alert('Business added!');
     } catch (error) {
-      console.error('Error taking over van:', error.response ? error.response.data : error.message);
-      alert('Error taking over van. Please try again.');
+      console.error('Error adding business:', error.response ? error.response.data : error.message);
+      alert('Error adding business. Please try again.');
     }
   };
                             
