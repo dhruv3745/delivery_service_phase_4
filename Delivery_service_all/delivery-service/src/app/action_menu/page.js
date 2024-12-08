@@ -208,7 +208,7 @@ function ActionMenu() {
   };
   
   const hireEmployee = () => {
-    setTitle("Hire employee")
+    setTitle("Hire Employee")
 
     updateFields('hire_employee');
   };
@@ -342,10 +342,13 @@ function ActionMenu() {
     }
   };
   const submitHireEmployee = async (employeeHire) => {
+    console.log("hit")
     const payload = {
       ip_username: employeeHire["Username"],
       ip_id: employeeHire["ID"]
     };
+
+    console.log(payload)
   
     try {
       const response = await axios.post('http://localhost:4321/hire_employee', payload);
