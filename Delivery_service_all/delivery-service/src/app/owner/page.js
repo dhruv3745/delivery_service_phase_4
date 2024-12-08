@@ -39,7 +39,7 @@ function OwnerPage() {
       setModalOpen(false); // Close modal
       alert('Owner added successfully!'); // Display success alert
       // After adding the driver, fetch the latest data
-      fetchDriverData();
+      fetchOwnerData();
     } catch (error) {
       console.error('Error adding owner:', error.response ? error.response.data : error.message);
       alert('Error adding owner. Please try again.'); // Display error alert

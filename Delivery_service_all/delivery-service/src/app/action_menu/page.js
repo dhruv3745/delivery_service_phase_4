@@ -96,8 +96,11 @@ function ActionMenu() {
     setModalOpen(true);
   };
 
+  
+
   const [isModalOpen, setModalOpen] = useState(false);
   const [columns, setColumns] = useState([]);
+  const [title, setTitle] = useState("");
 
   // Example function to create service (for the Modal)
   const createService = () => {
@@ -108,6 +111,7 @@ function ActionMenu() {
   // const [createFields,setCreateFields] = useState([]);
 
   const fieldMappings = {
+    add_business: ['Name', 'Rating', 'Spent', 'Location'],
     add_van: ['ID', 'Tag', 'Fuel Type', 'Capacity', 'Sales', 'Driven By'],
     add_worker_role: ['Username'],
     drive_van: ['ID', 'Tag', 'Destination'],
@@ -125,6 +129,10 @@ function ActionMenu() {
   };
   
   const [createFields, setCreateFields] = useState([]);
+
+  const submitButton = (formData) => {
+    handleSubmit(title, formData)
+  };
   
   const updateFields = (action) => {
     if (fieldMappings[action]) {
@@ -133,89 +141,442 @@ function ActionMenu() {
       setCreateFields([]);
     }
   };
+  const handleSubmit = (buttonName, formData) => {
+    // Call the respective submit function based on the button clicked
+    switch (buttonName) {
+      case 'Add Business':
+        submitAddBusiness(formData);
+        break;
+      case 'Add Van':
+        submitAddVan(formData);
+        break;
+      case 'Add Worker':
+        submitAddWorkerRole(formData);
+        break;
+      case 'Drive Van':
+        submitDriveVan(formData);
+        break;
+      case 'Fire Employee':
+        submitFireEmployee(formData);
+        break;
+      case 'Hire Employee':
+        submitHireEmployee(formData);
+        break;
+      case 'Load Van':
+        submitLoadVan(formData);
+        break;
+      case 'Manage Service':
+        submitManageService(formData);
+        break;
+      case 'Purchase Product':
+        submitPurchaseProduct(formData);
+        break;
+      case 'Refuel Van':
+        submitRefuelVan(formData);
+        break;
+      case 'Remove Driver':
+        submitRemoveDriverRole(formData);
+        break;
+      case 'Remove Product':
+        submitRemoveProduct(formData);
+        break;
+      case 'Remove Van':
+        submitRemoveVan(formData);
+        break;
+      case 'Start Funding':
+        submitStartFunding(formData);
+        break;
+      case 'Takeover Van':
+        submitTakeoverVan(formData);
+        break;
+      default:
+        console.log('Unknown action');
+    }
   
+    // Open the modal when any button is clicked
+    setModalOpen(false);
+  };
+
+  
+
   const addBusiness = () => {
-    console.log('Adding business...');
-    updateFields('add_van');
+    setTitle("Add Business")
+
+    updateFields('add_business');
   };
   
   const addVan = () => {
-    console.log('Adding van...');
+    setTitle("Add Van")
+
     updateFields('add_van');
   };
   
   const addWorkerRole = () => {
-    console.log('Adding worker role...');
+    setTitle("Add Worker")
+
     updateFields('add_worker_role');
   };
   
   const driveVan = () => {
-    console.log('Driving van...');
+
+    setTitle("Drive Van")
+
     updateFields('drive_van');
   };
   
   const fireEmployee = () => {
-    console.log('Firing employee...');
+
+    setTitle("Fire Employee")
+
     updateFields('fire_employee');
   };
   
   const hireEmployee = () => {
-    console.log('Hiring employee...');
+    setTitle("Hire employee")
+
     updateFields('hire_employee');
   };
   
   const loadVan = () => {
-    console.log('Loading van...');
+    setTitle("Load Van")
+
     updateFields('load_van');
   };
   
   const manageService = () => {
-    console.log('Managing service...');
+    setTitle("Manage Service")
+
     updateFields('manage_service');
   };
   
   const purchaseProduct = () => {
-    console.log('Purchasing product...');
+
+    setTitle("Purchase Product")
+
     updateFields('purchase_product');
   };
   
   const refuelVan = () => {
-    console.log('Refueling van...');
+    setTitle("Refuel Van")
+
     updateFields('refuel_van');
   };
   
   const removeDriverRole = () => {
-    console.log('Removing driver role...');
+    setTitle("Remove Driver")
+
     updateFields('remove_driver_role');
   };
   
   const removeProduct = () => {
-    console.log('Removing product...');
+    setTitle("Remove Product")
+
     updateFields('remove_product');
   };
   
   const removeVan = () => {
-    console.log('Removing van...');
+    setTitle("Remove Van")
+
     updateFields('remove_van');
   };
   
   const startFunding = () => {
-    console.log('Starting funding...');
+    setTitle("Start Funding")
+
     updateFields('start_funding');
   };
   
   const takeoverVan = () => {
-    console.log('Taking over van...');
+    setTitle("Takeover Van")
+
     updateFields('takeover_van');
   };
   
+
+
+
+  const submitAddVan = async (newVan) => {
+    const payload = {
+      ip_id: newVan["ID"],
+      ip_tag: newVan["Tag"],
+      ip_fuel: newVan["Fuel Type"],
+      ip_capacity: newVan["Capacity"],
+      ip_sales: newVan["Sales"],
+      ip_driven_by: newVan["Driven By"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/add_van', payload);
+      console.log('Van added successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Van added successfully!');
+      fetchVanData();
+    } catch (error) {
+      console.error('Error adding van:', error.response ? error.response.data : error.message);
+      alert('Error adding van. Please try again.');
+    }
+  };
+
+  
+  const submitAddWorkerRole = async (newWorker) => {
+    const payload = {
+      ip_username: newWorker["Username"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/add_worker_role', payload);
+      console.log('Worker role added successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Worker role added successfully!');
+      fetchWorkerRoleData();
+    } catch (error) {
+      console.error('Error adding worker role:', error.response ? error.response.data : error.message);
+      alert('Error adding worker role. Please try again.');
+    }
+  };
+  const submitDriveVan = async (vanDrive) => {
+    const payload = {
+      ip_id: vanDrive["ID"],
+      ip_tag: vanDrive["Tag"],
+      ip_destination: vanDrive["Destination"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/drive_van', payload);
+      console.log('Van driven successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Van driven successfully!');
+      fetchVanData();
+    } catch (error) {
+      console.error('Error driving van:', error.response ? error.response.data : error.message);
+      alert('Error driving van. Please try again.');
+    }
+  };
+  const submitFireEmployee = async (employeeFire) => {
+    const payload = {
+      ip_username: employeeFire["Username"],
+      ip_id: employeeFire["ID"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/fire_employee', payload);
+      console.log('Employee fired successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Employee fired successfully!');
+      fetchEmployeeData();
+    } catch (error) {
+      console.error('Error firing employee:', error.response ? error.response.data : error.message);
+      alert('Error firing employee. Please try again.');
+    }
+  };
+  const submitHireEmployee = async (employeeHire) => {
+    const payload = {
+      ip_username: employeeHire["Username"],
+      ip_id: employeeHire["ID"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/hire_employee', payload);
+      console.log('Employee hired successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Employee hired successfully!');
+      fetchEmployeeData();
+    } catch (error) {
+      console.error('Error hiring employee:', error.response ? error.response.data : error.message);
+      alert('Error hiring employee. Please try again.');
+    }
+  };
+  const submitLoadVan = async (vanLoad) => {
+    const payload = {
+      ip_id: vanLoad["ID"],
+      ip_tag: vanLoad["Tag"],
+      ip_barcode: vanLoad["Barcode"],
+      ip_more_packages: vanLoad["More Packages"],
+      ip_price: vanLoad["Price"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/load_van', payload);
+      console.log('Van loaded successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Van loaded successfully!');
+      fetchVanData();
+    } catch (error) {
+      console.error('Error loading van:', error.response ? error.response.data : error.message);
+      alert('Error loading van. Please try again.');
+    }
+  };
+  const submitManageService = async (serviceManager) => {
+    const payload = {
+      ip_username: serviceManager["Username"],
+      ip_id: serviceManager["ID"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/manage_service', payload);
+      console.log('Service managed successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Service managed successfully!');
+      fetchServiceData();
+    } catch (error) {
+      console.error('Error managing service:', error.response ? error.response.data : error.message);
+      alert('Error managing service. Please try again.');
+    }
+  };
+  const submitPurchaseProduct = async (productPurchase) => {
+    const payload = {
+      ip_long_name: productPurchase["Long Name"],
+      ip_id: productPurchase["ID"],
+      ip_tag: productPurchase["Tag"],
+      ip_barcode: productPurchase["Barcode"],
+      ip_quantity: productPurchase["Quantity"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/purchase_product', payload);
+      console.log('Product purchased successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Product purchased successfully!');
+      fetchProductData();
+    } catch (error) {
+      console.error('Error purchasing product:', error.response ? error.response.data : error.message);
+      alert('Error purchasing product. Please try again.');
+    }
+  };
+  const submitRefuelVan = async (vanRefuel) => {
+    const payload = {
+      ip_id: vanRefuel["ID"],
+      ip_tag: vanRefuel["Tag"],
+      ip_more_fuel: vanRefuel["More Fuel"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/refuel_van', payload);
+      console.log('Van refueled successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Van refueled successfully!');
+      fetchVanData();
+    } catch (error) {
+      console.error('Error refueling van:', error.response ? error.response.data : error.message);
+      alert('Error refueling van. Please try again.');
+    }
+  };
+  const submitRemoveDriverRole = async (removeDriver) => {
+    const payload = {
+      ip_username: removeDriver["Username"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/remove_driver_role', payload);
+      console.log('Driver role removed successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Driver role removed successfully!');
+      fetchDriverData();
+    } catch (error) {
+      console.error('Error removing driver role:', error.response ? error.response.data : error.message);
+      alert('Error removing driver role. Please try again.');
+    }
+  };
+  const submitRemoveProduct = async (productRemove) => {
+    const payload = {
+      ip_barcode: productRemove["Barcode"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/remove_product', payload);
+      console.log('Product removed successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Product removed successfully!');
+      fetchProductData();
+    } catch (error) {
+      console.error('Error removing product:', error.response ? error.response.data : error.message);
+      alert('Error removing product. Please try again.');
+    }
+  };
+  const submitRemoveVan = async (vanRemove) => {
+    const payload = {
+      ip_id: vanRemove["ID"],
+      ip_tag: vanRemove["Tag"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/remove_van', payload);
+      console.log('Van removed successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Van removed successfully!');
+      fetchVanData();
+    } catch (error) {
+      console.error('Error removing van:', error.response ? error.response.data : error.message);
+      alert('Error removing van. Please try again.');
+    }
+  };
+  const submitStartFunding = async (fundingStart) => {
+    const payload = {
+      ip_owner: fundingStart["Owner"],
+      ip_amount: fundingStart["Amount"],
+      ip_long_name: fundingStart["Long Name"],
+      ip_fund_date: fundingStart["Fund Date"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/start_funding', payload);
+      console.log('Funding started successfully:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Funding started successfully!');
+      fetchFundingData();
+    } catch (error) {
+      console.error('Error starting funding:', error.response ? error.response.data : error.message);
+      alert('Error starting funding. Please try again.');
+    }
+  };
+  const submitTakeoverVan = async (input_fields) => {
+    const payload = {
+      ip_username: vanTakeover["Username"],
+      ip_id: vanTakeover["ID"],
+      ip_tag: vanTakeover["Tag"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/takeover_van', payload);
+      console.log('Van takeover successful:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Van takeover successful!');
+      fetchVanData();
+    } catch (error) {
+      console.error('Error taking over van:', error.response ? error.response.data : error.message);
+      alert('Error taking over van. Please try again.');
+    }
+  };
+
+  const submitAddBusiness = async (input_fields) => {
+    const payload = {
+      ip_long_name: vanTakeover["Name"],
+      ip_rating: vanTakeover["Rating"],
+      ip_spent: vanTakeover["Spent"],
+      ip_location: vanTakeover["Location"]
+    };
+  
+    try {
+      const response = await axios.post('http://localhost:4321/add_business', payload);
+      console.log('Van takeover successful:', response.data);
+      setModalOpen(false); // Close modal
+      alert('Van takeover successful!');
+      fetchVanData();
+    } catch (error) {
+      console.error('Error taking over van:', error.response ? error.response.data : error.message);
+      alert('Error taking over van. Please try again.');
+    }
+  };
+                            
+
+
+
 
 
   return (
     <div className="action-menu">
       <div className="button-container">
       {actions.map((action) => {
-        console.log('action.name:', action.name);  // Log this value to check the type
         return (
           <button
             key={action.name}  // Ensure action.name is a string and unique
@@ -229,13 +590,12 @@ function ActionMenu() {
 
       </div>
 
-      {/* Modal component */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
-        title="Service"
+        title={title}
         fields={createFields}
-        createFunction={createService}
+        createFunction={submitButton}
       />
     </div>
   );

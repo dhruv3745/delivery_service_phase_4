@@ -37,7 +37,7 @@ function ServicePage() {
       setModalOpen(false); // Close modal
       alert('Service added successfully!'); // Display success alert
       // After adding the driver, fetch the latest data
-      fetchDriverData();
+      fetchServiceData();
     } catch (error) {
       console.error('Error adding service:', error.response ? error.response.data : error.message);
       alert('Error adding service. Please try again.'); // Display error alert

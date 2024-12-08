@@ -32,7 +32,7 @@ function ProductPage() {
       setModalOpen(false); // Close modal
       alert('Product added successfully!'); // Display success alert
       // After adding the driver, fetch the latest data
-      fetchDriverData();
+      fetchProductData();
     } catch (error) {
       console.error('Error adding product:', error.response ? error.response.data : error.message);
       alert('Error adding product. Please try again.'); // Display error alert

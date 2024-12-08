@@ -118,6 +118,26 @@ app.get('/service_view', (req, res) => {
     });
 });
 
+app.post('/add_business', (req, res) => {
+    const { ip_long_name, ip_rating, ip_spent, ip_location } = req.body;
+
+    if (!ip_long_name || !ip_rating || !ip_spent || !ip_location) {
+        return res.status(400).json({ error: 'All fields are required' });
+    }
+
+    const query = 'CALL add_driver_role(?, ?, ?, ?)';
+    const params = [ip_long_name, ip_rating, ip_spent, ip_location];
+
+    db.query(query, params, (err, results) => {
+        if (err) {
+            console.error('Error calling stored procedure:', err.stack);
+            return res.status(500).json({ error: 'Failed to add business to the database' });
+        }
+        res.json({ message: 'business added successfully', results });
+    });
+});
+
+
 app.post('/add_driver', (req, res) => {
     const { ip_username, ip_licenseID, ip_license_type, ip_driver_experience } = req.body;
 
