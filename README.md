@@ -7,5 +7,5 @@ To setup the application, you will first have to clone the repository. Next, ope
 TODO
 
 ## Team Member Work Distribution
-Harsh Bhagat - Stored Procedures Debugging & Application Testing
-Beckham Luong - Stored Procedures Debugging & Application Testing
+- Harsh Bhagat - Stored Procedures Debugging & Application Testing
+- Beckham Luong - Stored Procedures Debugging & Application Testing
