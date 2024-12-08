@@ -1,0 +1,178 @@
+/* CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #fff; /* White text */
+  background-color: #2c2c2c; /* Charcoal background */
+  padding: 0;
+}
+
+/* Import Montserrat font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+
+/* Sticky Top Bar */
+.sticky-bar {
+  position: sticky;
+  top: 0;
+  background-color: #333;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  justify-content: space-around; /* Equal spacing between items */
+  align-items: center; /* Vertically center the content */
+  height: 60px; /* Fixed height for the sticky bar */
+  padding: 0 20px; /* Horizontal padding */
+  z-index: 1000; /* Ensure the sticky bar stays on top */
+}
+
+.sticky-bar a {
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: uppercase;
+  color: #3557b5; /* Static blue color for text */
+  transition: transform 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+}
+
+.sticky-bar a:hover {
+  transform: scale(1.2); /* Make the text bigger on hover */
+  font-size: 28px; /* Increase the size on hover */
+  color: #60A5FA; /* Lighter blue on hover */
+}
+
+/* Global Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #2c2c2c;
+  border-radius: 8px;
+}
+
+/* Centering content */
+.centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center; /* Center the text inside */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  margin-bottom: 16px;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Table Styles */
+.table-container {
+  width: 100%;
+  max-height: 500px; /* You can adjust this height as needed */
+  overflow-y: auto; /* Make the table scrollable if the content exceeds the height */
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #444; /* Optional border for the container */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #fff;
+}
+
+table th, table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #555;
+}
+
+table th {
+  background-color: #444;
+  color: #fff;
+}
+
+table tr {
+  height: 50px; /* Set a fixed height for each row */
+}
+
+table td {
+  background-color: #333; /* Give a background to each row */
+}
+
+table td.empty-row {
+  background-color: #555; /* Color for empty rows */
+}
+
+/* Buttons */
+.button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+
+.action-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #2c2c2c;
+  padding: 20px;
+}
+
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+  gap: 20px;
+}
+
+.action-btn {
+  background-color: #007bff; /* Blue background for buttons */
+  color: white;
+  padding: 15px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 200px; /* Make buttons a consistent width */
+  margin: 10px;
+}
+
+.action-btn:hover {
+  background-color: #0056b3; /* Darker blue when hovering */
+  transform: scale(1.1); /* Slightly enlarge button on hover */
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .action-btn {
+    width: 90%; /* Make buttons responsive on smaller screens */
+  }
+}
