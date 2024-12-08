@@ -10,3 +10,4 @@ The database, as can be expected, was done in sql. The backend communication wit
 - Dhruv Saxena - Coding of backend API and frontend website
 - Harsh Bhagat - Stored Procedures Debugging & Application Testing
 - Beckham Luong - Stored Procedures Debugging & Application Testing
+- Yizhen Jia - Backend API Research & Application Testing
