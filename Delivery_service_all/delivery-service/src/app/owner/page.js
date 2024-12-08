@@ -46,15 +46,17 @@ function OwnerPage() {
     }
   };
 
+  const fetchOwnerData = async () => {
+    try {
+      const response = await axios.get('http://localhost:4321/owner_view');
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching driver data:', error);
+    }
+  };
+
   useEffect(() => {
-    axios.get('http://localhost:4321/owner_view')
-        .then(response => {
-          const data = response.data;
-          setData(data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+    fetchOwnerData();
   }, []);
 
   return (

@@ -43,15 +43,19 @@ function LocationPage() {
     }
   };
 
+  const fetchLocationData = async () => {
+    try {
+      const response = await axios.get('http://localhost:4321/location_view');
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching location data:', error);
+    }
+  };
+
+  
+
   useEffect(() => {
-    axios.get('http://localhost:4321/location_view')
-        .then(response => {
-          const data = response.data;
-          setData(data);
-        })
-        .catch(error => {
-          console.error('Error:', error);
-        });
+    fetchLocationData();
   }, []);
 
   return (

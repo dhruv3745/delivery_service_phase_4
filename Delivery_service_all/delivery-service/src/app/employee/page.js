@@ -35,7 +35,9 @@ function EmployeePage() {
     axios.get('http://localhost:4321/employee_view')
         .then(response => {
           const data = response.data;
-          console.log(data[0].hired.substring(0,10));
+          for (const item of data){
+            item.hired = item.hired.substring(0, 10);
+          }
           setData(data);
         })
         .catch(error => {
