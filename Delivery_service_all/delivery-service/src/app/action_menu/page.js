@@ -593,7 +593,7 @@ function ActionMenu() {
       <Modal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}
-        title={title}
+        title={title || "item"}
         fields={createFields}
         createFunction={submitButton}
       />
